@@ -1,0 +1,36 @@
+service: netlify-oauth
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  environment: ${file(./.env.yml)}
+
+functions:
+  login:
+    handler: handler.login
+    timeout: 120
+    events:
+      - http:
+          path: /
+          method: get
+  auth:
+    handler: handler.auth
+    timeout: 120
+    events:
+      - http:
+          path: /auth
+          method: get
+  callback:
+    handler: handler.callback
+    timeout: 120
+    events:
+      - http:
+          path: /callback
+          method: get
+  success:
+    handler: handler.success
+    timeout: 120
+    events:
+      - http:
+          path: /success
+          method: get

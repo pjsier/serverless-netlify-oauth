@@ -1,0 +1,15 @@
+{
+    "name": "serverless-netlify-oauth",
+    "version": "0.0.1",
+    "description": "Serverless OAuth client for Netlify CMS authentication",
+    "repository": "https://github.com/pjsier/serverless-netlify-oauth",
+    "author": "Patrick Sier <pjsier@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "randomstring": "^1.1.5",
+        "simple-oauth2": "^1.2.0"
+    },
+    "devDependencies": {
+        "serverless": "^1.24.0"
+    }
+}

@@ -59,18 +59,18 @@ module.exports = {
       const script = `
       <script>
       (function() {
-        function recieveMessage(e) {
-          console.log("recieveMessage %o", e)
+        function receiveMessage(e) {
+          console.log("receiveMessage %o", e);
           // send message to main window with da app
           window.opener.postMessage(
             'authorization:github:${mess}:${JSON.stringify(content)}',
             e.origin
-          )
+          );
         }
-        window.addEventListener("message", recieveMessage, false)
+        window.addEventListener("message", receiveMessage, false);
         // Start handshare with parent
-        console.log("Sending message: %o", "github")
-        window.opener.postMessage("authorizing:github", "*")
+        console.log("Sending message: %o", "github");
+        window.opener.postMessage("authorizing:github", "*");
         })()
       </script>`;
 

@@ -15,7 +15,6 @@ const oauth2 = simpleOauthModule.create({
 
 // Authorization uri definition
 const authorizationUri = oauth2.authorizationCode.authorizeURL({
-  redirect_uri: process.env.CALLBACK_BASE + '/callback' || 'localhost/callback',
   scope: 'repo,user',
   state: randomstring.generate(32)
 });
@@ -25,7 +24,7 @@ module.exports = {
     cb(null, {
       statusCode: 200,
       headers: { 'Content-Type': 'text/html' },
-      body: `<a href="${process.env.CALLBACK_BASE}/auth">Login with GitHub</a>`
+      body: '<a href="/auth">Login with GitHub</a>'
     });
   },
   auth: (event, context, cb) => {
@@ -37,8 +36,7 @@ module.exports = {
       .catch(cb);
   },
   callback: (event, context, cb) => {
-    const code = event.code;
-    const options = { code: code };
+    const options = { code: event.queryStringParameters.code };
 
     oauth2.authorizationCode.getToken(options, (error, result) => {
       let mess, content;

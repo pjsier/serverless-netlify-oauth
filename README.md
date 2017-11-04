@@ -8,8 +8,8 @@ Set up `serverless` according to [their documentation](https://github.com/server
 
 ### API Gateway Setup
 
-Because Netlify is checking the origin in OAuth requests and raw API Gateway URLs include the stage (i.e. `/dev/`), you'll need to associate a custom domain name with your API Gateway endpoint. Once you've created that in the dashboard, copy the `.env.yml.sample` to `.env.yml`, and change `CALLBACK_BASE` to that URL without a trailing slash.
+Because Netlify is checking the origin in OAuth requests and raw API Gateway URLs include the stage (i.e. `/dev/`), you'll need to associate a custom domain name with your API Gateway endpoint.
 
-Then, create a GitHub OAuth app according to the [GitHub developer documentation](https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/registering-oauth-apps/). The callback URL should be the API Gateway endpoint followed by `/callback`. Add the client ID and secret to `.env.yml`.
+Then, create a GitHub OAuth app according to the [GitHub developer documentation](https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/registering-oauth-apps/). The callback URL should be the API Gateway custom endpoint followed by `/callback`. Once you've set that up, copy the `.env.yml.sample` to `.env.yml`, and fill in the client ID and secret.
 
-You'll need to add `base_url` to your CMS config file, which will be the same as the `CALLBACK_BASE` (still not including a trailing slash).
+You'll need to add `base_url` to your CMS config file, which will be the custom API Gateway endpoint without a trailing slash.
